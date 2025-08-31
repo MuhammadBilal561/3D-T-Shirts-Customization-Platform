@@ -1,15 +1,27 @@
-import express from 'express';
-import fetch from 'node-fetch';
-import * as dotenv from 'dotenv';
+import express from "express";
+import * as dotenv from "dotenv";
+import fetch from "node-fetch";
+
 dotenv.config();
+const app = express();
 
-const router = express.Router();
+// Body parser
+app.use(express.json({ limit: "50mb" }));
 
-router.get("/", (req, res) => {
-  res.status(200).json({ message: "Hello from DALL.E" });
+// Preflight and CORS for all routes
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://3-d-t-shirts-customization-platform.vercel.app");
+  res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(200); // Respond immediately to preflight
+  }
+  next();
 });
 
-router.post("/", async (req, res) => {
+// Root POST endpoint for image generation
+app.post("/", async (req, res) => {
   const { prompt } = req.body;
   if (!prompt) return res.status(400).json({ error: "Prompt is required" });
 
@@ -41,4 +53,9 @@ router.post("/", async (req, res) => {
   }
 });
 
-export default router;
+// Root GET endpoint for testing
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Backend running 🚀" });
+});
+
+export default app; // ✅ for Vercel serverless
