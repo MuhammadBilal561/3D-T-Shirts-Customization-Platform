@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:8080", 
+  baseURL: "https://3d-tshirt-platform-backend-3fe80texh-muhammad-bilals-projects.vercel.app/",
 });
 
 export default api;
