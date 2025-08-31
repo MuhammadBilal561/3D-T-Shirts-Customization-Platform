@@ -55,7 +55,7 @@ app.post("/", async (req, res) => {
 
 // Root GET endpoint for testing
 app.get("/", (req, res) => {
-  res.status(200).json({ message: "Backend running 🚀" });
+  res.status(200).json({ message: "Backend running .." });
 });
 
 export default app; // ✅ for Vercel serverless
