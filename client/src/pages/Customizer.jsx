@@ -55,7 +55,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
   
-      const { data } = await api.post("/dalle", { prompt }); // ✅ Axios call
+      const { data } = await api.post("/api/v1/dalle", { prompt }); // ✅ Axios call
   
       if (data.photo) {
         handleDecals(type, `data:image/png;base64,${data.photo}`);
