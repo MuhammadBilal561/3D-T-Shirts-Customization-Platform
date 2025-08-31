@@ -22,5 +22,4 @@ app.get("/", (req, res) => {
   res.status(200).json({ message: "Backend is running " });
 });
 
-// ❌ DO NOT listen(); Vercel handles it
 export default app;

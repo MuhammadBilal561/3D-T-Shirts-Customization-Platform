@@ -8,7 +8,7 @@ const app = express();
 // Body parser
 app.use(express.json({ limit: "50mb" }));
 
-// Preflight and CORS for all routes
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://3-d-t-shirts-customization-platform.vercel.app");
   res.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
