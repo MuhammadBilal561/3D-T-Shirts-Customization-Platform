@@ -1,8 +1,7 @@
-// client/src/lib/api.js
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "/api",   // ✅ this will point to Vercel’s serverless functions
+  baseURL: import.meta.env.VITE_API_BASE_URL, // ✅ comes from .env
 });
 
 export default api;
